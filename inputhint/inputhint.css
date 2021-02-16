@@ -1,0 +1,16 @@
+.input_hint_rez {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: 2;
+    min-width: 200px;
+    max-width: 500px;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 5px;
+}
+.input_hint_rez .input_hint_rez_item {
+    cursor: pointer;
+}
