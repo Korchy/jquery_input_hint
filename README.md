@@ -7,19 +7,19 @@ Plugin files
 -
 InputHint plugin requires the following files to work:
 
-<b>page.html</b>
+- <b>page.html</b>
 
 Your page where you place the input field.
 
-<b>inputhint/inputhint.js</b>
+- <b>inputhint/inputhint.js</b>
 
 The main plugin file must be included on the main page.
 
-<b>inputhint/inputhint.css</b>
+- <b>inputhint/inputhint.css</b>
 
 File with CSS-styles to make the hints looks like you need. Must be included on the main page.
 
-<b>query.php</b>
+- <b>query.php</b>
 
 File with a query that executes each time the user types text in the input field to return the relevant hints.
 
@@ -38,7 +38,7 @@ In the "head" block include the link to the .css file:
         >
     </head>
 
-Add the "inputhint" class, and "hing_query" and "limits" paramenters to the input field which requires hints:
+Add the "inputhint" class, and "hint_query" and "limits" paramenters to the input field which requires hints:
 
     <input type="text"
         class="inputhint"
