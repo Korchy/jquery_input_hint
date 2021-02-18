@@ -102,4 +102,4 @@ If the user clicks on any hint item, the input field fills with the selected tex
 
 More Info
 -
-For additional information please visit the <a href="progr.interplanety.org/en/inputhint/">InputHint</a> web page.
+For additional information please visit the <a href="https://progr.interplanety.org/en/inputhint-2/">InputHint</a> web page.
