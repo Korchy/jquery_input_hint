@@ -7,7 +7,7 @@
 //  Output params:
 //      JSON encoded associated array with the results of executing your query
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-$query_rez = '';
+$query_rez = [];
 if(isset($_POST['search']) && $_POST['search']) {
     $limit = (isset($_POST['limit']) && $_POST['limit'] > 0) ? $_POST['limit'] : 0;
     
@@ -21,16 +21,32 @@ if(isset($_POST['search']) && $_POST['search']) {
     // This is the sample array
     //      remove it and specify $query_rez = [...] as you need
 
-    $query_rez = [
-        ['variant_01_a' => 'Ivanov', 'variant_01_b' => 'Ivan'],
-        ['variant_02_a' => 'Ivanishevich', 'variant_02_b' => 'Peter'],
-        ['variant_03_a' => 'Miiva', 'variant_03_b' => 'Daniella'],
-        ['variant_04_a' => 'Nivalov', 'variant_04_b' => 'Nien'],
-        ['variant_05_a' => 'Iva', 'variant_05_b' => 'Nguen'],
-        ['variant_06_a' => 'Brival', 'variant_06_b' => 'Mikhail']
-    ];
+    $names = ['Liam', 'Noah', 'Oliver', 'William', 'Elijah', 'James', 'Benjamin', 'Lucas', 'Mason', 'Ethan', 'Alexander',
+        'Henry', 'Jacob', 'Michael', 'Daniel', 'Logan', 'Jackson', 'Sebastian', 'Jack', 'Aiden', 'Owen', 'Samuel', 'Matthew',
+        'Joseph', 'Levi', 'Mateo', 'David', 'John', 'Wyatt', 'Carter', 'Julian', 'Luke', 'Grayson', 'Isaac', 'Jayden', 'Theodore',
+        'Gabriel', 'Anthony', 'Dylan', 'Leo', 'Lincoln', 'Jaxon', 'Asher', 'Christopher', 'Josiah', 'Andrew', 'Thomas', 'Joshua',
+        'Ezra', 'Hudson', 'Charles', 'Caleb', 'Isaiah', 'Ryan', 'Nathan', 'Adrian', 'Christian', 'Maverick', 'Colton', 'Elias',
+        'Aaron', 'Eli', 'Landon', 'Jonathan', 'Nolan', 'Hunter', 'Cameron', 'Connor', 'Santiago', 'Jeremiah', 'Ezekiel', 'Angel',
+        'Roman', 'Easton', 'Miles', 'Robert', 'Jameson', 'Nicholas', 'Greyson', 'Cooper', 'Ian', 'Carson', 'Axel', 'Jaxson', 'Dominic',
+        'Leonardo', 'Luca', 'Austin', 'Jordan', 'Adam', 'Xavier', 'Jose', 'Jace', 'Everett', 'Declan', 'Evan', 'Kayden', 'Parker',
+        'Wesley', 'Kai', 'Brayden', 'Bryson', 'Weston', 'Jason', 'Emmett', 'Sawyer', 'Silas', 'Bennett', 'Brooks', 'Micah',
+        'Damian', 'Harrison', 'Waylon', 'Ayden', 'Vincent', 'Ryder', 'Kingston', 'Rowan', 'George', 'Luis', 'Chase', 'Cole',
+        'Nathaniel', 'Zachary', 'Ashton', 'Braxton', 'Gavin', 'Tyler', 'Diego', 'Bentley', 'Amir', 'Beau', 'Gael', 'Carlos',
+        'Ryker', 'Jasper', 'Max', 'Juan', 'Ivan', 'Brandon', 'Jonah', 'Giovanni', 'Kaiden', 'Myles', 'Calvin', 'Lorenzo', 'Maxwell',
+        'Jayce', 'Kevin', 'Legend', 'Ben'];
 
+    $search = $_POST['search'];
+
+    $matches = array_filter($names, function($var) use ($search) { return preg_match("/$search/i", $var); });
+
+    if($limit && $limit > count($matches)) {
+        $matches = array_slice($matches, 0, $limit, true);
+    }
+
+    $query_rez = [];
+    foreach($matches as $key => $value) 
+        $query_rez[][$value] = $value;
 }
-echo json_encode(array_slice($query_rez, 0, $limit, true));
+echo json_encode($query_rez);
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ?>
