@@ -1,7 +1,7 @@
 # InputHint
 InputHint is the JQUERY plugin that adds an ability to help the user with hints when he is typing text in the input field.
 
-<img src="https://progr.interplanety.org/wp-content/upload_content/2021/02/preview_00_1200x600-400x200.jpg"><p>
+<img src="https://progr.interplanety.org/wp-content/upload_content/2021/02/preview_00_1200x600-400x200.jpg "><\p>
 
 Current vertsion
 -
