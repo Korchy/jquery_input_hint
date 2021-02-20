@@ -54,30 +54,39 @@ $(window).on('unload', function() {
 				success: function(responce) {
 					// console.log(responce);
 					// console.log(JSON.parse(responce));
-					let rez = JSON.parse(responce);
-					// show results as hints
-					let rez_length = Object.keys(rez).length;
-					if(rez_length > 0) {
-						// div for hint showing
-						let searchRez = '<div class = "input_hint_rez">';
-						for(var i = 0; i < rez_length; i++) {
-							// in the hint item show data from the first field
-							let view_field = Object.keys(rez[i])[0];
-							searchRez += '<div class = "input_hint_rez_item"';
-							searchRez +=  ' hint_data = "' + encodeURI(JSON.stringify(rez[i])) + '"';	// all data
-							searchRez += '>' + rez[i][view_field] + '</div>';
-						}
-						searchRez += '</div>';
-						// add to page
-						close_hint();
-						obj.after(searchRez);
-						// under the input field
-						$('.input_hint_rez').css('left', obj.position().left + 'px');
-						$('.input_hint_rez').css('top', (obj.position().top + obj.height() + 3) + 'px');
-						// hint on click event
-						$('.input_hint_rez_item').on('click', on_hint_item_select);
+					let rez = null;
+					try {
+						rez = JSON.parse(responce);
 					}
-					else close_hint();
+					catch(err) {
+						console.log(err);
+						console.log(responce);
+					}
+					if(rez) {
+						// show results as hints
+						let rez_length = Object.keys(rez).length;
+						if(rez_length > 0) {
+							// div for hint showing
+							let searchRez = '<div class = "input_hint_rez">';
+							for(var i = 0; i < rez_length; i++) {
+								// in the hint item show data from the first field
+								let view_field = Object.keys(rez[i])[0];
+								searchRez += '<div class = "input_hint_rez_item"';
+								searchRez +=  ' hint_data = "' + encodeURI(JSON.stringify(rez[i])) + '"';	// all data
+								searchRez += '>' + rez[i][view_field] + '</div>';
+							}
+							searchRez += '</div>';
+							// add to page
+							close_hint();
+							obj.after(searchRez);
+							// under the input field
+							$('.input_hint_rez').css('left', obj.position().left + 'px');
+							$('.input_hint_rez').css('top', (obj.position().top + obj.height() + 3) + 'px');
+							// hint on click event
+							$('.input_hint_rez_item').on('click', on_hint_item_select);
+						}
+						else close_hint();
+					}
 				}
 			});
 		}

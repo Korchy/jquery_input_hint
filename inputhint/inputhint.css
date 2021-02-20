@@ -10,6 +10,7 @@
     border-radius: 5px;
     padding: 3px;
     margin: 5px;
+    text-align: left;
 }
 .input_hint_rez .input_hint_rez_item {
     cursor: pointer;
